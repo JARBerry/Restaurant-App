@@ -9,7 +9,7 @@
 import UIKit
 
 class CategoryTableViewController: UITableViewController {
-    let menuController = MenuController()
+  //  let menuController = MenuController()
     var categories = [String]()
     
 
@@ -17,11 +17,11 @@ class CategoryTableViewController: UITableViewController {
         super.viewDidLoad()
   
         // load categories from the URL requests
-        menuController.fetchCategories { (categories) in
-            if let categories = categories {
-                self.updateUI(with: categories)
-                
-            }
+        MenuController.shared.fetchCategories { (categories) in
+//            if let categories = categories {
+//                self.updateUI(with: categories)
+//
+//            }
         }
 
         // Uncomment the following line to preserve selection between presentations
