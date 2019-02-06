@@ -1,14 +1,16 @@
 //
-//  CategoryTableViewController.swift
+//  MenuTableViewController.swift
 //  Restaurant App
 //
-//  Created by James and Ray Berry on 05/02/2019.
+//  Created by Ray Berry on 05/02/2019.
 //  Copyright © 2019 JARBerry. All rights reserved.
 //
 
 import UIKit
 
-class CategoryTableViewController: UITableViewController {
+class MenuTableViewController: UITableViewController {
+    
+    var category: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +22,8 @@ class CategoryTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
+  
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
