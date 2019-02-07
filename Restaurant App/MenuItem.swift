@@ -2,7 +2,7 @@
 //  MenuItem.swift
 //  Restaurant App
 //
-//  Created by Ray Berry on 05/02/2019.
+//  Created by James and Ray Berry on 05/02/2019.
 //  Copyright © 2019 JARBerry. All rights reserved.
 //
 
