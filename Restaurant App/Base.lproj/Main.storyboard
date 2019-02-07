@@ -133,6 +133,9 @@
                                 <state key="normal" title="Add To Order">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="orderButtonTapped:" destination="GxM-Fg-QeX" eventType="touchUpInside" id="BCC-nm-5gd"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -157,6 +160,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="c1E-97-qVu"/>
                     </view>
+                    <connections>
+                        <outlet property="addToOrderButton" destination="0ni-gf-XBu" id="3OQ-SY-nnt"/>
+                        <outlet property="descriptionLabel" destination="EJT-U5-OS8" id="Zhk-wX-3kY"/>
+                        <outlet property="imageView" destination="VEd-BN-VUZ" id="GIb-wn-2aF"/>
+                        <outlet property="priceLabel" destination="nDf-UA-tAQ" id="Hzj-p6-3xr"/>
+                        <outlet property="titleLabel" destination="COU-bU-PaS" id="EEI-s7-uQi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="InC-ao-M4v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

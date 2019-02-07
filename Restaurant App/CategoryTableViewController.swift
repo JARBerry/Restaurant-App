@@ -18,10 +18,10 @@ class CategoryTableViewController: UITableViewController {
   
         // load categories from the URL requests
         MenuController.shared.fetchCategories { (categories) in
-//            if let categories = categories {
-//                self.updateUI(with: categories)
-//
-//            }
+            if let categories = categories {
+                self.updateUI(with: categories)
+
+            }
         }
 
         // Uncomment the following line to preserve selection between presentations
