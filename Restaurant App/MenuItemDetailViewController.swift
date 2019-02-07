@@ -2,13 +2,15 @@
 //  MenuItemDetailViewController.swift
 //  Restaurant App
 //
-//  Created by Ray Berry on 05/02/2019.
+//  Created by James and Ray Berry on 05/02/2019.
 //  Copyright © 2019 JARBerry. All rights reserved.
 //
 
 import UIKit
 
 class MenuItemDetailViewController: UIViewController {
+    
+    var delegate: AddToOrderDelegate?
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
@@ -24,6 +26,7 @@ class MenuItemDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
+        setupDelegate()
 
         // Do any additional setup after loading the view.
     }
@@ -33,16 +36,33 @@ class MenuItemDetailViewController: UIViewController {
         priceLabel.text = String(format: "£%.2f", menuItem.price)
         descriptionLabel.text = menuItem.description
         addToOrderButton.layer.cornerRadius = 5.0
+        MenuController.shared.fetchImage(url: menuItem.imageURL)
+        {(image) in
+            guard let image = image else { return }
+            DispatchQueue.main.async {
+                self.imageView.image = image
+            }
+        }
     }
+    
+    func setupDelegate() {
+        if let navController = tabBarController?.viewControllers?.last as? UINavigationController,
+            let orderTableViewController = navController.viewControllers.first as? OrderTableViewController {
+            delegate = orderTableViewController
+        }
+    }
+    
+   
 
     @IBAction func orderButtonTapped(_ sender: UIButton) {
         UIView.animate(withDuration: 0.3) {
         self.addToOrderButton.transform = CGAffineTransform(scaleX: 3.0, y: 3.0)
         self.addToOrderButton.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
         }
+        delegate?.added(menuItem: menuItem)
     }
     
-    
+   
     /*
     // MARK: - Navigation
 
@@ -53,4 +73,8 @@ class MenuItemDetailViewController: UIViewController {
     }
     */
 
+}
+
+protocol AddToOrderDelegate {
+    func added(menuItem: MenuItem)
 }

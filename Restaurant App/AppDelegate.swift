@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  Restaurant App
 //
-//  Created by Ray Berry on 05/02/2019.
+//  Created by James and Ray Berry on 05/02/2019.
 //  Copyright © 2019 JARBerry. All rights reserved.
 //
 
@@ -15,7 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        let temporaryDirectory = NSTemporaryDirectory()
+        let urlCache = URLCache(memoryCapacity: 25000000, diskCapacity: 50000000, diskPath: temporaryDirectory)
+        URLCache.shared = urlCache
         return true
     }
 
