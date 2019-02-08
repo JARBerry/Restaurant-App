@@ -20,7 +20,7 @@ class OrderTableViewController: UITableViewController, AddToOrderDelegate {
         navigationItem.leftBarButtonItem = editButtonItem
 
     }
-    
+    // added menu items
     func added(menuItem: MenuItem) {
         menuItems.append(menuItem)
         let count = menuItems.count
@@ -29,14 +29,14 @@ class OrderTableViewController: UITableViewController, AddToOrderDelegate {
         updateBadgeNumber()
     }
     
-    
+  // update badge number
     func updateBadgeNumber() {
         let badgeValue = menuItems.count > 0 ?
         "\(menuItems.count)" : nil
         navigationController?.tabBarItem.badgeValue = badgeValue
     }
     
-    
+ // confirm order button tapped
     @IBAction func submitTapped(_ sender: Any) {
         let orderTotal = menuItems.reduce(0.0) { (result, menuItem) -> Double in
             return result + menuItem.price
@@ -51,6 +51,7 @@ class OrderTableViewController: UITableViewController, AddToOrderDelegate {
         present(alert, animated: true, completion: nil)
     }
     
+    // post order to URL
     func uploadOrder() {
         let menuIds = menuItems.map {$0.id}
         MenuController.shared.submitOrder(menuIds: menuIds)
@@ -63,7 +64,7 @@ class OrderTableViewController: UITableViewController, AddToOrderDelegate {
             }
         }
     }
-    
+    // dismiss button pressed go back to order screen
     @IBAction func unwindToOrderList(segue: UIStoryboardSegue) {
         if segue.identifier == "DismissConfirmation" {
             menuItems.removeAll()
@@ -73,6 +74,8 @@ class OrderTableViewController: UITableViewController, AddToOrderDelegate {
         
     }
     
+    
+    // prepare confirmation screen
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ConfirmationSegue" {
             let orderConfirmationViewController = segue.destination as!OrderConfirmationViewController
@@ -82,27 +85,31 @@ class OrderTableViewController: UITableViewController, AddToOrderDelegate {
 
     // MARK: - Table view data source
 
+    // number of section is only 1
     override func numberOfSections(in tableView: UITableView) -> Int {
        
         return 1
     }
 
+    // number of rows is the totl of menu items
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return menuItems.count
     }
 
-    
+    // configure the cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OrderCellIdentifier", for: indexPath)
 
-        // Configure the cell...
+
         
         configure(cell: cell, forItemAt: indexPath)
 
         return cell
     }
     
+    
+    // customise the cell
     func configure(cell: UITableViewCell, forItemAt indexPath: IndexPath) {
         let menuItem = menuItems[indexPath.row]
         cell.textLabel?.text = menuItem.name
@@ -144,7 +151,7 @@ class OrderTableViewController: UITableViewController, AddToOrderDelegate {
         }
     }
     
-    
+    // change table view height
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }

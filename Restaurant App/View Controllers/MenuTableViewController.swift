@@ -14,6 +14,8 @@ class MenuTableViewController: UITableViewController {
     var menuItems = [MenuItem]()
     var category: String!
 
+    
+    // load up the menu items on to the screen
     override func viewDidLoad() {
         super.viewDidLoad()
         title = category.capitalized
@@ -34,6 +36,7 @@ class MenuTableViewController: UITableViewController {
         }
     }
     
+    // configure the table view cell including the retrieved imaage
     func configure(cell: UITableViewCell, forItemAt indexPath: IndexPath) {
         let menuItem = menuItems[indexPath.row]
         cell.textLabel?.text = menuItem.name
@@ -68,13 +71,12 @@ class MenuTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCellIdentifier", for: indexPath)
         configure(cell: cell, forItemAt: indexPath)
 
-        // Configure the cell...
 
         return cell
     }
     
     
-
+  // prepare for Segue to MenuDetailSegue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "MenuDetailSegue" {
             let menuItemDetailViewController = segue.destination as! MenuItemDetailViewController

@@ -32,6 +32,8 @@ class MenuItemDetailViewController: UIViewController {
     }
     
     func updateUI() {
+        
+        // display menu item details
         titleLabel.text = menuItem.name
         priceLabel.text = String(format: "£%.2f", menuItem.price)
         descriptionLabel.text = menuItem.description
@@ -45,6 +47,7 @@ class MenuItemDetailViewController: UIViewController {
         }
     }
     
+    // passes details to order table view controller
     func setupDelegate() {
         if let navController = tabBarController?.viewControllers?.last as? UINavigationController,
             let orderTableViewController = navController.viewControllers.first as? OrderTableViewController {
@@ -53,7 +56,7 @@ class MenuItemDetailViewController: UIViewController {
     }
     
    
-
+// animate order button if add to order button tapped
     @IBAction func orderButtonTapped(_ sender: UIButton) {
         UIView.animate(withDuration: 0.3) {
         self.addToOrderButton.transform = CGAffineTransform(scaleX: 3.0, y: 3.0)

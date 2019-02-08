@@ -11,19 +11,15 @@ import UIKit
 
 class MenuController {
     
-     static let shared = MenuController()
+    static let shared = MenuController()
     
-    // hits local server
+    // hits local server - ensure server is up and running first
     let baseURL = URL(string: "http://localhost:8090/")!
-  
     
     
-    // Make request URL session for categories
+    // Make request URL session for categories which are defined in menu.json
     func fetchCategories(completion: @escaping ([String]?) -> Void) {
         let categoryURL = baseURL.appendingPathComponent("categories")
-        
-        print(categoryURL)
-        
         // Feedback responses for categories
         let task = URLSession.shared.dataTask(with: categoryURL) { (data, response, error) in
             if let data = data, let jsonDictionary = try? JSONSerialization.jsonObject(with: data) as? [String: Any], let categories = jsonDictionary?["categories"] as? [String] {
@@ -35,13 +31,14 @@ class MenuController {
         
         task.resume()
     }
-   
-    // Make request URL session for Menu Items
+    
+    // Make request URL session for Menu Items which are defined in menu.json
     func fetchMenuItems(categoryName: String, completion: @escaping ([MenuItem]?) -> Void) {
         let initialMenuURL = baseURL.appendingPathComponent("menu")
         var components = URLComponents(url: initialMenuURL, resolvingAgainstBaseURL: true)!
         components.queryItems = [URLQueryItem(name: "category", value: categoryName)]
         let menuURL = components.url!
+        // Feedback repsonses for menuItems
         let task = URLSession.shared.dataTask(with: menuURL)
         {
             (data,response,error) in
@@ -55,7 +52,7 @@ class MenuController {
         }
         task.resume()
     }
-
+    
     // Posts Submitted orders
     func submitOrder(menuIds: [Int],  completion: @escaping (Int?) -> Void) {
         let orderURL = baseURL.appendingPathComponent("order")
@@ -74,9 +71,11 @@ class MenuController {
         // Store the data within the body of the request.
         request.httpBody = jsonData
         
+        
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let data = data, let jsonDictionary = try? JSONSerialization.jsonObject(with: data) as? [String: Any], let prepTime = jsonDictionary?["preparation_time"] as? Int {
                 completion(prepTime)
+                
             } else {
                 completion(nil)
             }
@@ -86,6 +85,8 @@ class MenuController {
         task.resume()
     }
     
+    
+    // fecth image data
     func fetchImage(url: URL, completion: @escaping (UIImage?) -> Void) {
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let data = data,
@@ -98,7 +99,7 @@ class MenuController {
         }
         task.resume()
     }
-
+    
     
 }
 

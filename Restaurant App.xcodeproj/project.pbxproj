@@ -70,14 +70,9 @@
 		1753602A2209D6FE002B2052 /* Restaurant App */ = {
 			isa = PBXGroup;
 			children = (
-				17D9DA052209E025002532E3 /* MenuItem.swift */,
-				17D9DA072209E183002532E3 /* IntermediaryModels.swift */,
-				17D9DA092209E29C002532E3 /* MenuController.swift */,
-				1753603D2209DB71002B2052 /* CategoryTableViewController.swift */,
-				1753603F2209DB97002B2052 /* MenuTableViewController.swift */,
-				175360412209DBC9002B2052 /* OrderTableViewController.swift */,
-				17755DCD220C3F680052B4AB /* OrderConfirmationViewController.swift */,
-				17D9DA032209DEFB002532E3 /* MenuItemDetailViewController.swift */,
+				17755DCF220C8CC80052B4AB /* Model */,
+				17755DD0220C8D170052B4AB /* Controller */,
+				17755DD2220C8D6C0052B4AB /* View Controllers */,
 				1753602B2209D6FE002B2052 /* AppDelegate.swift */,
 				1753602D2209D6FE002B2052 /* ViewController.swift */,
 				1753602F2209D6FE002B2052 /* Main.storyboard */,
@@ -86,6 +81,35 @@
 				175360372209D700002B2052 /* Info.plist */,
 			);
 			path = "Restaurant App";
+			sourceTree = "<group>";
+		};
+		17755DCF220C8CC80052B4AB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				17D9DA052209E025002532E3 /* MenuItem.swift */,
+				17D9DA072209E183002532E3 /* IntermediaryModels.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		17755DD0220C8D170052B4AB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				17D9DA092209E29C002532E3 /* MenuController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		17755DD2220C8D6C0052B4AB /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1753603D2209DB71002B2052 /* CategoryTableViewController.swift */,
+				1753603F2209DB97002B2052 /* MenuTableViewController.swift */,
+				175360412209DBC9002B2052 /* OrderTableViewController.swift */,
+				17755DCD220C3F680052B4AB /* OrderConfirmationViewController.swift */,
+				17D9DA032209DEFB002532E3 /* MenuItemDetailViewController.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

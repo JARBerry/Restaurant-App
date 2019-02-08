@@ -16,6 +16,6 @@ struct PreparationTime: Codable {
     let prepTime: Int
     
     enum CodingKeys: String, CodingKey {
-        case prepTime = "prepartion_time"
+        case prepTime = "preparation_time"
     }
 }
