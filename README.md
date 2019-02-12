@@ -1,9 +1,9 @@
-# Restaurant-App
-Restaurant App using RestAPI and JSON Data
+# Restaurant App
+
 
 ## Overview
 
-This is an App which provides an interactive menu to allow customers to a list of menu offerings, add items to an order,and submits the order to the restaurant
+This is an App which provides an interactive menu to allow customers to a list of menu offerings, add items to an order,and submits the order to the restaurantusing REST API and JSON data.
 
 ## Features in this demo
 • Use of REST API and JSON data to display menu items and categories
